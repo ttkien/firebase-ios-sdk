@@ -1,3 +1,6 @@
+# Unreleased
+- [fixed] Fixed a crash that occurred rarely when trying to restart a URL session task without a valid request (#5984).
+
 # v4.3.1
 - [fixed] Fixed a segmentation fault that could occur when writing crash contexts to disk (#6048).
 
