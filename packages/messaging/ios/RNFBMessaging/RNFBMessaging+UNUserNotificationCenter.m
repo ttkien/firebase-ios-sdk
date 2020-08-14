@@ -75,7 +75,9 @@ struct {
 
     // TODO in a later version allow customising completion options in JS code
     completionHandler(UNNotificationPresentationOptionNone);
-  } else if (_originalDelegate != nil && originalDelegateRespondsTo.willPresentNotification) {
+  }
+
+  if (_originalDelegate != nil && originalDelegateRespondsTo.willPresentNotification) {
     [_originalDelegate userNotificationCenter:center willPresentNotification:notification withCompletionHandler:completionHandler];
   } else {
     completionHandler(UNNotificationPresentationOptionNone);
@@ -89,6 +91,7 @@ struct {
     [[RNFBRCTEventEmitter shared] sendEventWithName:@"messaging_notification_opened" body:notificationDict];
     _initialNotification = notificationDict;
   }
+
 
   if (_originalDelegate != nil && originalDelegateRespondsTo.didReceiveNotificationResponse) {
     [_originalDelegate userNotificationCenter:center didReceiveNotificationResponse:response withCompletionHandler:completionHandler];
